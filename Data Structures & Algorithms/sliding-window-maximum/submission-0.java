@@ -1,0 +1,27 @@
+class Solution {
+
+    public int[] maxSlidingWindow(int[] nums, int k) {
+
+        int n = nums.length;
+
+        int[] ans = new int[n - k + 1];
+
+        int index = 0;
+
+        // generate all windows
+        for (int i = 0; i <= n - k; i++) {
+
+            int max = nums[i];
+
+            // find maximum in current window
+            for (int j = i; j < i + k; j++) {
+
+                max = Math.max(max, nums[j]);
+            }
+
+            ans[index++] = max;
+        }
+
+        return ans;
+    }
+}
